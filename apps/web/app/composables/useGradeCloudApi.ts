@@ -8,7 +8,7 @@ export function useGradeCloudApi() {
   const config = useRuntimeConfig()
   const apiBase = String(config.public.apiBase).replace(/\/$/, '')
 
-  async function call<T>(path: string, method: HttpMethod = 'GET', body?: unknown) {
+  async function call<T>(path: string, method: HttpMethod = 'GET', body?: Record<string, any>) {
     const response = await $fetch<ApiResponse<T>>(`${apiBase}/api/v1${path}`, { method, body })
     return response.data
   }
